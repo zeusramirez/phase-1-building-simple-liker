@@ -3,6 +3,55 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+//global variables 
+let hideError = document.querySelector('#modal')
+hideError.className = 'hidden'
+let likeBtn = document.querySelectorAll('.like span')
+//event listeners
+likeBtn.forEach(span => span.addEventListener('click', e => likeClick(e)))
+//functions
+
+function likeClick(e){
+  let likeValue = e.target
+mimicServerCall('http://mimicServer.example.com', config = {})
+.then(success => updateLike(success))
+.catch(error => errorMsg(error))
+
+function updateLike(success){
+  console.log(success)
+  if (likeValue.textContent === EMPTY_HEART){
+    likeValue.className = 'activated-heart'
+    likeValue.textContent = FULL_HEART
+
+  }else if (likeValue.textContent === FULL_HEART){
+  likeValue.className = ''
+  likeValue.textContent = EMPTY_HEART
+  }
+}
+function errorMsg(error){
+  console.log(error)
+  hideError.className=''
+  setTimeout(()=>hideError.className='hidden', 3000)
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
